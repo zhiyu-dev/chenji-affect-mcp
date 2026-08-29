@@ -1,5 +1,7 @@
 # Chenji Affect MCP Server
 
+<!-- mcp-name: io.github.zhiyu-dev/chenji-affect-mcp -->
+
 Turn raw text into structured affect signals — an **8-dimensional emotion vector**, **emotion texture labels**, **causal intent**, and **3D avatar driving parameters** — inside any MCP-capable client (Claude Desktop, Cursor, Qoder, etc.).
 
 Powered by the [Chenji Affect API](https://rapidapi.com/zhiyudev/api/chenji-affect-api) (`taichusjs.cn`).
