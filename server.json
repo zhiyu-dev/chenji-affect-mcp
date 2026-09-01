@@ -1,0 +1,25 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.zhiyu-dev/chenji-affect-mcp",
+  "title": "Chenji Affect",
+  "description": "Text to 8-dim emotion vector, emotion texture, causal intent, 3D avatar driving parameters, empathy response strategies and somatic-sensation emotion decoding",
+  "version": "1.1.0",
+  "repository": {
+    "url": "https://github.com/zhiyu-dev/chenji-affect-mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://taichusjs.cn/mcp",
+      "headers": [
+        {
+          "name": "x-api-key",
+          "description": "Chenji API key (free BASIC tier on RapidAPI or taichusjs.cn)",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    }
+  ]
+}

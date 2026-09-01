@@ -2,7 +2,7 @@
 
 <!-- mcp-name: io.github.zhiyu-dev/chenji-affect-mcp -->
 
-Turn raw text into structured affect signals — an **8-dimensional emotion vector**, **emotion texture labels**, **causal intent**, and **3D avatar driving parameters** — inside any MCP-capable client (Claude Desktop, Cursor, Qoder, etc.).
+Turn raw text into structured affect signals — an **8-dimensional emotion vector**, **emotion texture labels**, **causal intent**, **3D avatar driving parameters**, **empathy response strategies**, and **somatic-sensation emotion decoding** — inside any MCP-capable client (Claude Desktop, Cursor, Qoder, etc.).
 
 Powered by the [Chenji Affect API](https://rapidapi.com/zhiyudev/api/chenji-affect-api) (`taichusjs.cn`).
 
@@ -12,6 +12,24 @@ Powered by the [Chenji Affect API](https://rapidapi.com/zhiyudev/api/chenji-affe
 | --- | --- | --- |
 | `analyze_text` | L1 | Text → 8-dim affect vector + emotion texture + intent + state description |
 | `generate_avatar_params` | L2 | Text → blendshape/AU/curve animation package + lighting/atmosphere package + upstream L1 |
+| `empathy_hint` | L3 | Text → deterministic empathy response strategy (approach, tone, pacing, focus, avoid-list), ~20ms, no LLM |
+| `somatic_decode` | L4 | Body-sensation text → structured emotion (primary affect, valence/arousal, texture, intent) + somatic anchors |
+
+## Remote mode (no install)
+
+Clients that support streamable-http MCP can connect directly, no local package needed:
+
+```json
+{
+  "mcpServers": {
+    "chenji-affect": {
+      "type": "streamable-http",
+      "url": "https://taichusjs.cn/mcp",
+      "headers": { "x-api-key": "cj-your-key-here" }
+    }
+  }
+}
+```
 
 ## Install
 
@@ -51,6 +69,7 @@ Environment variables:
 
 - L1 input is limited to 2000 characters (every 200 chars = 1 billing unit).
 - `generate_avatar_params` requires a key tier that includes L2.
+- `empathy_hint` and `somatic_decode` are billed as L1-family calls (trial tier applies).
 - Privacy: raw text is never persisted by the API; only key hashes and telemetry are retained.
 - Wellness and affect-state simulation only — not a medical or diagnostic tool.
 
